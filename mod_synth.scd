@@ -28,11 +28,9 @@ on = MIDIFunc.noteOn({ | veloc, num, chan, src|
 	~synthGroup);
 });
 
-off = MIDIFunc.noteOff({ |veloc, num, chan, src |
-	notes[num].release;
-});
+off = MIDIFunc.noteOff({ |veloc, num, chan, src | notes[num].release;});
 
-//Any control is bound to my LFO freq.
+//Any control is bound to my mod_freq, but I have a slick modulation wheel on my controller.
 MIDIFunc.cc( {|val,  num, chan, src|
 	var max_mod_freq = 220;
 	var control = ControlSpec(1, max_mod_freq, \exponential, default:1);
